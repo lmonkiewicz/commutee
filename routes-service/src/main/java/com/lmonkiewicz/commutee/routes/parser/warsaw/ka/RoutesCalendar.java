@@ -1,18 +1,18 @@
 package com.lmonkiewicz.commutee.routes.parser.warsaw.ka;
 
 
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.SetMultimap;
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.ListMultimap;
 
 import java.util.Collections;
-import java.util.Set;
+import java.util.List;
 
 /**
  * Created by lmonkiewicz on 2017-02-20.
  */
 public class RoutesCalendar {
 
-    private SetMultimap<String, String> data = HashMultimap.create();
+    private ListMultimap<String, String> data = ArrayListMultimap.create();
 
     public void put(String date, String value){
         data.put(date, value);
@@ -27,13 +27,17 @@ public class RoutesCalendar {
         put(date, values);
     }
 
-    public Set<String> getRouteTypesFor(String date){
+    public List<String> getRouteTypesFor(String date){
         if (data.containsKey(date)) {
-            return Collections.unmodifiableSet(data.get(date));
+            return Collections.unmodifiableList(data.get(date));
         }
         else {
-            return Collections.emptySet();
+            return Collections.emptyList();
         }
+    }
+
+    public boolean isType(String date, String type){
+        return data.containsEntry(date, type);
     }
 
 
