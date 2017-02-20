@@ -1,0 +1,5 @@
+*KA  487
+   2015-12-01    5    D2  N2  DP  NS  NO
+   2015-12-02    5    D3  N3  DP  NS  NO
+   2015-12-06    6    D7  N7  TS  DS  NS  NO
+#KA
