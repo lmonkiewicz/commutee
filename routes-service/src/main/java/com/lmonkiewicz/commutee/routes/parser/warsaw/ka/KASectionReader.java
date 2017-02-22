@@ -5,7 +5,8 @@ import com.lmonkiewicz.commutee.routes.parser.warsaw.AbstractSectionReader;
 import com.lmonkiewicz.commutee.routes.parser.warsaw.ZtmUtils;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.BufferedReader;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -21,18 +22,10 @@ public class KASectionReader extends AbstractSectionReader<RoutesCalendar> {
     }
 
     @Override
-    protected void onSectionEnd(String sectionCode, BufferedReader in) {
-    }
-
-    @Override
-    protected void onSectionStart(String sectionCode, BufferedReader in) {
-    }
-
-    @Override
     protected void onSectionContentLine(@NotNull String line) {
-        final List<String> columns = ZtmUtils.asColumns(line, 14, 5, 4, 4, 4, 4, 4, 4, 4);
+        final List<String> columns = ZtmUtils.asColumns(line, 17, 5, 4, 4, 4, 4, 4, 4, 4);
 
-        final String date = columns.get(0);
+        final LocalDate date = LocalDate.parse(columns.get(0), DateTimeFormatter.ofPattern(ZtmUtils.DATE_PATTERN));
 
         final Integer count = Integer.valueOf(columns.get(1));
         for (int i = 0; i < count; i++) {

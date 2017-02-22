@@ -30,9 +30,9 @@ public abstract class AbstractSectionReader<T> implements SectionReader<T> {
         }
     }
 
-    protected abstract void onSectionEnd(@NotNull String sectionCode, @NotNull BufferedReader in);
+    protected void onSectionEnd(@NotNull String sectionCode, @NotNull BufferedReader in){}
 
-    protected abstract void onSectionStart(@NotNull String sectionCode, @NotNull BufferedReader in);
+    protected void onSectionStart(@NotNull String sectionCode, @NotNull BufferedReader in){};
 
-    protected abstract void onSectionContentLine(@NotNull String line);
+    protected void onSectionContentLine(@NotNull String line) {};
 }

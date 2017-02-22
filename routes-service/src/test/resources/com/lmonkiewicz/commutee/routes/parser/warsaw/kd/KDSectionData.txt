@@ -1,0 +1,20 @@
+*KD   2
+   2017-02-25  11
+        1   SB
+        2   SB
+        3   SB
+      N95   NO
+       R1   SB
+       R9   SB
+       RL   SB
+       S1   DS
+       S3   DS
+      WKD   DS
+      Z-1   DS
+   2017-02-26  5
+        1   DS
+        2   DS
+        3   DS
+       R9   SB
+       RL   SB
+#KD

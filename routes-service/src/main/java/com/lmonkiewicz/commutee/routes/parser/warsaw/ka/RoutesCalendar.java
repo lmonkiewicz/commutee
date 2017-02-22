@@ -4,6 +4,7 @@ package com.lmonkiewicz.commutee.routes.parser.warsaw.ka;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
 
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 
@@ -12,22 +13,22 @@ import java.util.List;
  */
 public class RoutesCalendar {
 
-    private ListMultimap<String, String> data = ArrayListMultimap.create();
+    private ListMultimap<LocalDate, String> data = ArrayListMultimap.create();
 
-    public void put(String date, String value){
+    public void put(LocalDate date, String value){
         data.put(date, value);
     }
 
-    public void put(String date, Iterable<String> values) {
+    public void put(LocalDate date, Iterable<String> values) {
         data.putAll(date, values);
     }
 
-    public void set(String date, Iterable<String> values){
+    public void set(LocalDate date, Iterable<String> values){
         data.removeAll(date);
         put(date, values);
     }
 
-    public List<String> getRouteTypesFor(String date){
+    public List<String> getRouteTypesFor(LocalDate date){
         if (data.containsKey(date)) {
             return Collections.unmodifiableList(data.get(date));
         }
@@ -36,7 +37,7 @@ public class RoutesCalendar {
         }
     }
 
-    public boolean isType(String date, String type){
+    public boolean isType(LocalDate date, String type){
         return data.containsEntry(date, type);
     }
 

@@ -1,6 +1,6 @@
 package com.lmonkiewicz.commutee.routes.parser.warsaw.ty;
 
-import com.lmonkiewicz.commutee.routes.parser.warsaw.BaseSectionParserTest;
+import com.lmonkiewicz.commutee.routes.parser.warsaw.BaseSectionReaderTest;
 import org.junit.Test;
 
 import java.io.BufferedReader;
@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by lmonkiewicz on 2017-02-20.
  */
-public class TYSectionReaderTest extends BaseSectionParserTest {
+public class TYSectionReaderTest extends BaseSectionReaderTest {
 
     @Test
     public void correctlyParsesInputStream() throws Exception {

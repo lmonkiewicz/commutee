@@ -64,7 +64,7 @@ public class ZtmUtilsTest {
 
     @Test
     public void splitIntoColumns() throws Exception {
-        List<String> columns = ZtmUtils.asColumns("  123 567 89 12  ", 4, 4, 3, 3, 10, 5);
+        List<String> columns = ZtmUtils.asColumns("  123 567 89 12  ", 6, 4, 3, 3, 10, 5);
 
         assertEquals(6, columns.size());
         assertEquals("123", columns.get(0));
@@ -73,6 +73,15 @@ public class ZtmUtilsTest {
         assertEquals("12", columns.get(3));
         assertEquals("", columns.get(4));
         assertEquals("", columns.get(5));
+
+    }
+
+    @Test
+    public void recognizesIndentaionLevel() throws Exception {
+        assertEquals(0, ZtmUtils.getIndentationLevel("No indent", ZtmUtils.DEFAULT_INDENT_SIZE));
+        assertEquals(1, ZtmUtils.getIndentationLevel("   One level indent", ZtmUtils.DEFAULT_INDENT_SIZE));
+        assertEquals(2, ZtmUtils.getIndentationLevel("      Two levels indent", ZtmUtils.DEFAULT_INDENT_SIZE));
+        assertEquals(1, ZtmUtils.getIndentationLevel("     Almost Two levels indent", ZtmUtils.DEFAULT_INDENT_SIZE));
 
     }
 }

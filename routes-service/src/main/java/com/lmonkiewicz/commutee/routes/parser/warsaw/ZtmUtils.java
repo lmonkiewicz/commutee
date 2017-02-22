@@ -12,6 +12,8 @@ public class ZtmUtils {
 
     private static final String SECTION_START = "*";
     private static final String SECTION_END = "#";
+    public static final int DEFAULT_INDENT_SIZE = 3;
+    public static final String DATE_PATTERN = "yyyy-MM-dd";
 
     public static boolean isSectionStart(String line){
         return line.trim().startsWith(SECTION_START);
@@ -36,6 +38,19 @@ public class ZtmUtils {
         return line.substring(1, 3);
     }
 
+    public static int getIndentationLevel(@NotNull String line, int levelSize){
+        int spaces = 0;
+        for (int i = 0; i < line.length(); i++) {
+            if (Character.isSpaceChar(line.charAt(i))){
+                spaces++;
+            }
+            else {
+                break;
+            }
+        }
+        return spaces / levelSize;
+    }
+
     /**
      * Splits input String line into list according to defined columns sizes
      *
@@ -47,7 +62,7 @@ public class ZtmUtils {
     public static List<String> asColumns(@NotNull String line, int... columnsSizes){
         final List<String> result = Lists.newArrayList();
 
-        String input =line.trim();
+        String input = line;
         for (int columnSize: columnsSizes){
             String value = "";
             if (input.length() >= columnSize) {
@@ -55,7 +70,7 @@ public class ZtmUtils {
                 input = input.substring(columnSize);
             }
             else {
-                value = input.substring(0);
+                value = input.substring(0).trim();
                 input = "";
             }
             result.add(value);

@@ -3,7 +3,6 @@ package com.lmonkiewicz.commutee.routes.parser.warsaw.ty;
 import com.lmonkiewicz.commutee.routes.parser.warsaw.AbstractSectionReader;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.BufferedReader;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,14 +16,6 @@ public class TYSectionReader extends AbstractSectionReader<Map<String,String>> {
     @Override
     public Map<String,String> result() {
         return result;
-    }
-
-    @Override
-    protected void onSectionEnd(@NotNull String sectionCode, @NotNull BufferedReader in) {
-    }
-
-    @Override
-    protected void onSectionStart(@NotNull String sectionCode, @NotNull BufferedReader in) {
     }
 
     @Override

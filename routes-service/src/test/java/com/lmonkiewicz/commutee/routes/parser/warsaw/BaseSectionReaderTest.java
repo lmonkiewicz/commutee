@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 /**
  * Created by lmonkiewicz on 2017-02-20.
  */
-public class BaseSectionParserTest {
+public class BaseSectionReaderTest {
     protected BufferedReader createReader(String fileName){
         return new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream(fileName)));
     }
