@@ -4,4 +4,4 @@ jdk:
 install:
 - cd routes-service && mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 script:
-- cd routes-service && mvn test -B
+- mvn test -B
