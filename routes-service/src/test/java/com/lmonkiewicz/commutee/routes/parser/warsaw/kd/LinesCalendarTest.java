@@ -1,6 +1,5 @@
 package com.lmonkiewicz.commutee.routes.parser.warsaw.kd;
 
-import com.lmonkiewicz.commutee.routes.parser.warsaw.SectionReaderException;
 import org.junit.Test;
 
 import java.time.LocalDate;
@@ -40,23 +39,5 @@ public class LinesCalendarTest {
         final String dayType = linesCalendar.get(LocalDate.now(), "175");
         assertEquals("DS", dayType);
 
-    }
-
-    @Test(expected = SectionReaderException.class)
-    public void shouldThrowOnWhenSettingValueWithNoDate() throws Exception {
-        final LinesCalendar linesCalendar = new LinesCalendar();
-        linesCalendar.set(null, "175", "DS");
-    }
-
-    @Test(expected = SectionReaderException.class)
-    public void shouldThrowOnWhenSettingValueWithNoLine() throws Exception {
-        final LinesCalendar linesCalendar = new LinesCalendar();
-        linesCalendar.set(LocalDate.now(), null, "DS");
-    }
-
-    @Test(expected = SectionReaderException.class)
-    public void shouldThrowOnWhenSettingValueWithNoDayType() throws Exception {
-        final LinesCalendar linesCalendar = new LinesCalendar();
-        linesCalendar.set(LocalDate.now(), "175", null);
     }
 }

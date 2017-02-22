@@ -2,7 +2,6 @@ package com.lmonkiewicz.commutee.routes.parser.warsaw.kd;
 
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
-import com.lmonkiewicz.commutee.routes.parser.warsaw.SectionReaderException;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -22,10 +21,9 @@ public class LinesCalendar {
      * @param lineName - line
      * @param dayType - day type
      */
-    public void set(@NotNull(exception = SectionReaderException.class) LocalDate currentDate,
-                    @NotNull(exception = SectionReaderException.class) String lineName,
-                    @NotNull(exception = SectionReaderException.class) String dayType) {
-
+    public void set(@NotNull LocalDate currentDate,
+                    @NotNull String lineName,
+                    @NotNull String dayType) {
         data.put(currentDate, lineName, dayType);
     }
 
