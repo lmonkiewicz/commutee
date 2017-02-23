@@ -24,13 +24,14 @@ public class TYSectionReaderTest extends BaseSectionReaderTest {
 
             Map<String, String> result = parser.result();
 
-            assertEquals(6, result.size());
+            assertEquals(7, result.size());
             assertEquals("PONIEDZIAŁEK", result.get("D1"));
             assertEquals("DZIEŃ POWSZEDNI", result.get("DP"));
             assertEquals("ŚWIĘTO", result.get("DS"));
             assertEquals("SOBOTA", result.get("SB"));
             assertEquals("NOC SOBOTA/NIEDZIELA", result.get("N6"));
             assertEquals("SYLWESTER", result.get("SY"));
+            assertEquals("NOC NIEDZIELA/PONIEDZIAŁEK", result.get("N7"));
 
         }
     }
