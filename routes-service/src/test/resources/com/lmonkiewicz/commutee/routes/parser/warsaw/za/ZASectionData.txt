@@ -1,0 +1,11 @@
+*ZA 9
+   4009   1 SIERPNIA,                         --  WARSZAWA
+   2293   1. PRASKIEGO PUŁKU,                 --  WARSZAWA
+   1076   11 LISTOPADA,                       --  WARSZAWA
+   1710   11 LISTOPADA,                       KB  KOBYŁKA
+   4038   17 STYCZNIA,                        --  WARSZAWA
+   3748   17 STYCZNIA,                        PS  PIASECZNO
+   3823   22 LIPCA,                           ZŁ  ZŁOTOKŁOS
+   1192   3 MAJA,                             LG  LEGIONOWO
+   5131   3 MAJA,                             OM  OŻARÓW MAZOWIECKI
+#ZA

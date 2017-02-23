@@ -16,8 +16,7 @@ public interface SectionReader<T> {
 
     /**
      * Returns a result of parsing
-     * @param <T>
      * @return
      */
-    <T> T result();
+    T result();
 }
