@@ -59,10 +59,10 @@ public class ZtmUtils {
      *
      * @return
      */
-    public static List<String> asColumns(@NotNull String line, int... columnsSizes){
+    public static List<String> asColumns(int indent, @NotNull String line, int... columnsSizes){
         final List<String> result = Lists.newArrayList();
 
-        String input = line;
+        String input = trimStart(indent, line);
         for (int columnSize: columnsSizes){
             String value = "";
             if (input.length() >= columnSize) {
@@ -76,5 +76,14 @@ public class ZtmUtils {
             result.add(value);
         }
         return result;
+    }
+
+    @NotNull
+    public static String trimStart(int indent, @NotNull String line){
+        int idx = indent * DEFAULT_INDENT_SIZE;
+        if (line.length() > idx){
+            return line.substring(idx);
+        }
+        return "";
     }
 }

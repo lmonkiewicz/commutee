@@ -34,12 +34,12 @@ public class KDSectionReader extends AbstractSectionReader<LinesCalendar> {
         final int level = ZtmUtils.getIndentationLevel(line, ZtmUtils.DEFAULT_INDENT_SIZE);
         switch(level){
             case DATES_LEVEL: {
-                final List<String> values = ZtmUtils.asColumns(line, 15, 5);
+                final List<String> values = ZtmUtils.asColumns(1, line, 12, 5);
                 currentDate = LocalDate.parse(values.get(0), DateTimeFormatter.ofPattern(ZtmUtils.DATE_PATTERN));
                 break;
             }
             case LINE_LEVEL: {
-                final List<String> values = ZtmUtils.asColumns(line, 12, 2);
+                final List<String> values = ZtmUtils.asColumns(2, line, 6, 2);
                 linesCalendar.set(currentDate, values.get(0), values.get(1));
                 break;
             }

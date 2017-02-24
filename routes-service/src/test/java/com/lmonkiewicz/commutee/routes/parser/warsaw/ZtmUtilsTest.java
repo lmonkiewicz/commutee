@@ -64,7 +64,7 @@ public class ZtmUtilsTest {
 
     @Test
     public void splitIntoColumns() throws Exception {
-        List<String> columns = ZtmUtils.asColumns("  123 567 89 12  ", 6, 4, 3, 3, 10, 5);
+        List<String> columns = ZtmUtils.asColumns(1, "   123 567 89 12  ", 4, 4, 3, 3, 10, 5);
 
         assertEquals(6, columns.size());
         assertEquals("123", columns.get(0));

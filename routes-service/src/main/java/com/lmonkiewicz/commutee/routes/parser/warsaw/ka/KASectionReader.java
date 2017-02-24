@@ -23,7 +23,7 @@ public class KASectionReader extends AbstractSectionReader<RoutesCalendar> {
 
     @Override
     protected void onSectionContentLine(@NotNull String line) {
-        final List<String> columns = ZtmUtils.asColumns(line, 17, 5, 4, 4, 4, 4, 4, 4, 4);
+        final List<String> columns = ZtmUtils.asColumns(1, line, 14, 5, 4, 4, 4, 4, 4, 4, 4);
 
         final LocalDate date = LocalDate.parse(columns.get(0), DateTimeFormatter.ofPattern(ZtmUtils.DATE_PATTERN));
 

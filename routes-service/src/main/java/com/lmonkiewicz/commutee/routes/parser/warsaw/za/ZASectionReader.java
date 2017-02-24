@@ -19,7 +19,7 @@ public class ZASectionReader extends AbstractSectionReader<BusStopGroups> {
 
     @Override
     protected void onSectionContentLine(@NotNull String line) {
-        final List<String> columns = ZtmUtils.asColumns(line, 10, 36, 4, 48);
+        final List<String> columns = ZtmUtils.asColumns(1, line, 6, 36, 4, 48);
 
         final BusStopGroup group = BusStopGroup.builder()
                 .id(columns.get(0))
