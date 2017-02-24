@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by lmonkiewicz on 2017-02-20.
  */
-public class KASectionReader extends AbstractSectionReader<RoutesCalendar> {
+public class KASectionReader extends AbstractSectionReader<RoutesCalendar, LocalDate> {
 
     private final RoutesCalendar routesCalendar = new RoutesCalendar();
 
@@ -22,7 +22,7 @@ public class KASectionReader extends AbstractSectionReader<RoutesCalendar> {
     }
 
     @Override
-    protected void onSectionContentLine(@NotNull String line) {
+    protected LocalDate onSectionContentLine(@NotNull String line) {
         final List<String> columns = ZtmUtils.asColumns(1, line, 14, 5, 4, 4, 4, 4, 4, 4, 4);
 
         final LocalDate date = LocalDate.parse(columns.get(0), DateTimeFormatter.ofPattern(ZtmUtils.DATE_PATTERN));
@@ -34,6 +34,6 @@ public class KASectionReader extends AbstractSectionReader<RoutesCalendar> {
                 routesCalendar.put(date, type);
             }
         }
-
+        return date;
     }
 }

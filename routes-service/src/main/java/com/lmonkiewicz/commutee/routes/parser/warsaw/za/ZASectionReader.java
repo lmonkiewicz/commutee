@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by lmonkiewicz on 2017-02-23.
  */
-public class ZASectionReader extends AbstractSectionReader<BusStopGroups> {
+public class ZASectionReader extends AbstractSectionReader<BusStopGroups, BusStopGroup> {
     private final BusStopGroups data = new BusStopGroups();
 
     @Override
@@ -18,7 +18,7 @@ public class ZASectionReader extends AbstractSectionReader<BusStopGroups> {
     }
 
     @Override
-    protected void onSectionContentLine(@NotNull String line) {
+    protected BusStopGroup onSectionContentLine(@NotNull String line) {
         final List<String> columns = ZtmUtils.asColumns(1, line, 6, 36, 4, 48);
 
         final BusStopGroup group = BusStopGroup.builder()
@@ -29,5 +29,6 @@ public class ZASectionReader extends AbstractSectionReader<BusStopGroups> {
                 .build();
 
         data.add(group);
+        return group;
     }
 }

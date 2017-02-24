@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * Created by lmonkiewicz on 2017-02-20.
  */
-public class TYSectionReader extends AbstractSectionReader<Map<String,String>> {
+public class TYSectionReader extends AbstractSectionReader<Map<String,String>, String> {
 
     private final Map<String,String> result = new HashMap<>();
 
@@ -19,9 +19,10 @@ public class TYSectionReader extends AbstractSectionReader<Map<String,String>> {
     }
 
     @Override
-    protected void onSectionContentLine(@NotNull String line) {
+    protected String onSectionContentLine(@NotNull String line) {
         String code = line.substring(3,5);
         String description = line.substring(8).trim();
         result.put(code, description);
+        return code;
     }
 }

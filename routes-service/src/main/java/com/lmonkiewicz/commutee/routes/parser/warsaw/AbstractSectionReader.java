@@ -1,6 +1,7 @@
 package com.lmonkiewicz.commutee.routes.parser.warsaw;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,21 +9,24 @@ import java.io.IOException;
 /**
  * Created by lmonkiewicz on 2017-02-19.
  */
-public abstract class AbstractSectionReader<T> implements SectionReader<T> {
+public abstract class AbstractSectionReader<T, B> implements SectionReader<T> {
+
+    private B lastLineResult;
 
     @Override
     public void readSection(@NotNull BufferedReader in) throws SectionReaderException {
         try {
             String line = null;
-            while((line = in.readLine()) != null){
+            while ((line = in.readLine()) != null) {
                 if (ZtmUtils.isSectionStart(line)) {
                     onSectionStart(ZtmUtils.extractSectionCode(line), in);
-                }
-                else if (ZtmUtils.isSectionEnd(line)){
+                } else if (ZtmUtils.isSectionEnd(line)) {
                     onSectionEnd(ZtmUtils.extractSectionCode(line), in);
-                }
-                else {
-                    onSectionContentLine(line);
+                } else {
+                    B lineResult = onSectionContentLine(line);
+                    if (lineResult != null) {
+                        setLastLineResult(lineResult);
+                    }
                 }
             }
         } catch (IOException e) {
@@ -34,5 +38,14 @@ public abstract class AbstractSectionReader<T> implements SectionReader<T> {
 
     protected void onSectionStart(@NotNull String sectionCode, @NotNull BufferedReader in){};
 
-    protected void onSectionContentLine(@NotNull String line) {};
+    @Nullable
+    protected B onSectionContentLine(@NotNull String line) { return null; };
+
+    public void setLastLineResult(B lastLineResult) {
+        this.lastLineResult = lastLineResult;
+    }
+
+    public B getLastLineResult() {
+        return lastLineResult;
+    }
 }

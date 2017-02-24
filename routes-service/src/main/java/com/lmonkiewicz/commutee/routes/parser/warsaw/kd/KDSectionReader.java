@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by lmonkiewicz on 2017-02-22.
  */
-public class KDSectionReader extends AbstractSectionReader<LinesCalendar> {
+public class KDSectionReader extends AbstractSectionReader<LinesCalendar, LocalDate> {
 
     private final static Logger LOG = LoggerFactory.getLogger(KDSectionReader.class);
 
@@ -22,30 +22,28 @@ public class KDSectionReader extends AbstractSectionReader<LinesCalendar> {
 
     private LinesCalendar linesCalendar = new LinesCalendar();
 
-    private LocalDate currentDate = null;
-
     @Override
     public LinesCalendar result() {
         return linesCalendar;
     }
 
     @Override
-    protected void onSectionContentLine(@NotNull String line) {
+    protected LocalDate onSectionContentLine(@NotNull String line) {
         final int level = ZtmUtils.getIndentationLevel(line, ZtmUtils.DEFAULT_INDENT_SIZE);
         switch(level){
             case DATES_LEVEL: {
                 final List<String> values = ZtmUtils.asColumns(1, line, 12, 5);
-                currentDate = LocalDate.parse(values.get(0), DateTimeFormatter.ofPattern(ZtmUtils.DATE_PATTERN));
-                break;
+                return LocalDate.parse(values.get(0), DateTimeFormatter.ofPattern(ZtmUtils.DATE_PATTERN));
             }
             case LINE_LEVEL: {
                 final List<String> values = ZtmUtils.asColumns(2, line, 6, 2);
-                linesCalendar.set(currentDate, values.get(0), values.get(1));
+                linesCalendar.set(getLastLineResult(), values.get(0), values.get(1));
                 break;
             }
             default: {
                 LOG.warn("Bad section format on line: '{}'", line);
             }
         }
+        return null;
     }
 }
