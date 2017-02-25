@@ -1,6 +1,7 @@
-package com.lmonkiewicz.commutee.routes.parser.warsaw.kd;
+package com.lmonkiewicz.commutee.routes.parser.warsaw.section;
 
 import com.lmonkiewicz.commutee.routes.parser.warsaw.BaseSectionReaderTest;
+import com.lmonkiewicz.commutee.routes.parser.warsaw.model.LinesCalendar;
 import org.junit.Test;
 
 import java.io.BufferedReader;

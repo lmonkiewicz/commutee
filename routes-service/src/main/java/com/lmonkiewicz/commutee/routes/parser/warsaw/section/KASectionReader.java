@@ -1,8 +1,9 @@
-package com.lmonkiewicz.commutee.routes.parser.warsaw.ka;
+package com.lmonkiewicz.commutee.routes.parser.warsaw.section;
 
 import com.google.common.base.Strings;
 import com.lmonkiewicz.commutee.routes.parser.warsaw.AbstractSectionReader;
 import com.lmonkiewicz.commutee.routes.parser.warsaw.ZtmUtils;
+import com.lmonkiewicz.commutee.routes.parser.warsaw.model.RoutesCalendar;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
@@ -19,6 +20,11 @@ public class KASectionReader extends AbstractSectionReader<RoutesCalendar, Local
     @Override
     public RoutesCalendar result() {
         return routesCalendar;
+    }
+
+    @Override
+    protected String getSectionCode() {
+        return "KA";
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.lmonkiewicz.commutee.routes.parser.warsaw.ka;
+package com.lmonkiewicz.commutee.routes.parser.warsaw.model;
 
 
 import com.google.common.collect.ArrayListMultimap;

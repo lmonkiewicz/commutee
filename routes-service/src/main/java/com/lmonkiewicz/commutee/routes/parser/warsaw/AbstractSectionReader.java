@@ -5,6 +5,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * Created by lmonkiewicz on 2017-02-19.
@@ -20,8 +21,16 @@ public abstract class AbstractSectionReader<T, B> implements SectionReader<T> {
             while ((line = in.readLine()) != null) {
                 if (ZtmUtils.isSectionStart(line)) {
                     onSectionStart(ZtmUtils.extractSectionCode(line), in);
+
                 } else if (ZtmUtils.isSectionEnd(line)) {
-                    onSectionEnd(ZtmUtils.extractSectionCode(line), in);
+                    final String sectionCode = ZtmUtils.extractSectionCode(line);
+
+                    onSectionEnd(sectionCode, in);
+
+                    if (Objects.equals(getSectionCode(), sectionCode)){
+                        break;
+                    }
+
                 } else {
                     B lineResult = onSectionContentLine(line);
                     if (lineResult != null) {
@@ -34,9 +43,11 @@ public abstract class AbstractSectionReader<T, B> implements SectionReader<T> {
         }
     }
 
+    protected abstract String getSectionCode();
+
     protected void onSectionEnd(@NotNull String sectionCode, @NotNull BufferedReader in){}
 
-    protected void onSectionStart(@NotNull String sectionCode, @NotNull BufferedReader in){};
+    protected void onSectionStart(@NotNull String sectionCode, @NotNull BufferedReader in) throws SectionReaderException {};
 
     @Nullable
     protected B onSectionContentLine(@NotNull String line) { return null; };

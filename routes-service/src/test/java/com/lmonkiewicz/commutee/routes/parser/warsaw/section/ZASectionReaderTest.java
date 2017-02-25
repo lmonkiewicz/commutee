@@ -1,11 +1,14 @@
-package com.lmonkiewicz.commutee.routes.parser.warsaw.za;
+package com.lmonkiewicz.commutee.routes.parser.warsaw.section;
 
 import com.lmonkiewicz.commutee.routes.parser.warsaw.BaseSectionReaderTest;
+import com.lmonkiewicz.commutee.routes.parser.warsaw.model.BusStopGroup;
+import com.lmonkiewicz.commutee.routes.parser.warsaw.model.BusStopGroups;
 import org.junit.Test;
 
 import java.io.BufferedReader;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * Created by lmonkiewicz on 2017-02-23.

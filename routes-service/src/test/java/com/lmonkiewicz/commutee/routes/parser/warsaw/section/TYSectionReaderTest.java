@@ -1,4 +1,4 @@
-package com.lmonkiewicz.commutee.routes.parser.warsaw.ty;
+package com.lmonkiewicz.commutee.routes.parser.warsaw.section;
 
 import com.lmonkiewicz.commutee.routes.parser.warsaw.BaseSectionReaderTest;
 import org.junit.Test;

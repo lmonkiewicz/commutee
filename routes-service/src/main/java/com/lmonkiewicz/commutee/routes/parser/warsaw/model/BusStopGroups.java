@@ -1,9 +1,10 @@
-package com.lmonkiewicz.commutee.routes.parser.warsaw.za;
+package com.lmonkiewicz.commutee.routes.parser.warsaw.model;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Stream;
 
 /**
  * Created by lmonkiewicz on 2017-02-23.
@@ -18,5 +19,9 @@ public class BusStopGroups {
 
     public BusStopGroup get(@NotNull String id){
         return data.get(id);
+    }
+
+    public Stream<BusStopGroup> stream() {
+        return data.values().stream();
     }
 }

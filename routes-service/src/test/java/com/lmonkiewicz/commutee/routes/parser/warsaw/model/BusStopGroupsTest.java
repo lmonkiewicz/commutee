@@ -1,8 +1,8 @@
-package com.lmonkiewicz.commutee.routes.parser.warsaw.za;
+package com.lmonkiewicz.commutee.routes.parser.warsaw.model;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by lmonkiewicz on 2017-02-23.

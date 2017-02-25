@@ -1,0 +1,75 @@
+*ZP 3
+   1001   KIJOWSKA,                        --  WARSZAWA
+      *PR  9
+         100101   2      Ul./Pl.: TARGOWA,                          Kier.: AL.ZIELENIECKA,                   Y= 52.248678     X= 21.044226
+            L  7  - stały:              123   138   146   147   166   509   517
+            L  4  - na żądanie:         N02   N03   N21   N71
+         100102   3      Ul./Pl.: TARGOWA,                          Kier.: ZĄBKOWSKA,                        Y= 52.249071     X= 21.044530
+            L  4  - stały:              138   166   509   517
+            L  1  - na żądanie:         N21
+            L  1  - dla wsiadających:   509^
+         100103   1      Ul./Pl.: TARGOWA,                          Kier.: AL.ZIELENIECKA,                   Y= 52.248998     X= 21.043983
+            L  8  - stały:                3     6     7     9^   22^   24^   25    26
+         100104   1      Ul./Pl.: TARGOWA,                          Kier.: ZĄBKOWSKA,                        Y= 52.249905     X= 21.041726
+            L  7  - stały:                3     6    13    23^   25    26    28
+         100105   1      Ul./Pl.: KIJOWSKA,                         Kier.: AL.ZIELENIECKA,                   Y= 52.250350     X= 21.043860
+            L  3  - stały:              123   146   147
+         100106   1      Ul./Pl.: KIJOWSKA,                         Kier.: DW.WSCHODNI (KIJOWSKA),           Y= 52.250008     X= 21.043710
+            L 11  - stały:                3^    6^    7     9^   13    22^   23^   24^   25^   26^   28
+         100107   2      Ul./Pl.: KIJOWSKA,                         Kier.: ZĄBKOWSKA,                        Y= 52.250236     X= 21.043587
+            L  6  - stały:              120   140   156   169   340   738
+            L  3  - na żądanie:         N02   N03   N71
+         100108   2      Ul./Pl.: KIJOWSKA,                         Kier.: DW.WSCHODNI (KIJOWSKA),           Y= 52.250060     X= 21.044240
+            L  9  - stały:              120   123   140   146   147   156   169   340   738
+            L  3  - na żądanie:         N02   N03   N71
+         100188   1      Ul./Pl.: KIJOWSKA,                         Kier.: DW.WSCHODNI (KIJOWSKA),           Y= 52.249820     X= 21.043890
+            L  3  - na żądanie:         N02   N03   N71
+      #PR
+   1002   ZĄBKOWSKA,                       --  WARSZAWA
+      *PR  5
+         100201   2      Ul./Pl.: TARGOWA,                          Kier.: KIJOWSKA,                         Y= 52.251300     X= 21.038540
+            L  8  - stały:              120   138   140   156   166   169   340   738
+            L  4  - na żądanie:         N02   N03   N21   N71
+         100202   2      Ul./Pl.: TARGOWA,                          Kier.: DW.WILEŃSKI,                      Y= 52.251720     X= 21.038640
+            L  8  - stały:              120   138   140   156   166 1  169   340   738
+            L  4  - na żądanie:         N02   N03   N21   N71
+         100203   1      Ul./Pl.: TARGOWA,                          Kier.: KIJOWSKA,                         Y= 52.251755     X= 21.038137
+            L  7  - stały:                3     6    13    23^   25    26    28
+         100204   1      Ul./Pl.: TARGOWA,                          Kier.: DW.WILEŃSKI,                      Y= 52.251923     X= 21.037890
+            L  7  - stały:                3     6    13    23^   25    26    28
+         100206   2      Ul./Pl.: TARGOWA,                          Kier.: DW.WILEŃSKI,                      Y= 52.253108     X= 21.036732
+            L  4  - stały:              135   162   170   338
+            L  4  - na żądanie:         N14   N16   N64   N66
+      #PR
+   1003   DW.WILEŃSKI,                     --  WARSZAWA
+      *PR  8
+         100301   4      Ul./Pl.: TARGOWA,                          Kier.: ZĄBKOWSKA,                        Y= 52.253736     X= 21.035480
+            L 12  - stały:              120   135   140   162   166   169   170   338   340   509   517   738
+            L  8  - na żądanie:         N02   N03   N14   N16   N21   N64   N66   N71
+            L  2  - dla wysiadających:  262^  512^
+            L  1  - dla wsiadających:   509^
+         100302   4      Ul./Pl.: TARGOWA,                          Kier.: WILEŃSKA,                         Y= 52.255220     X= 21.034700
+            L  4  - stały:              166   169   170   338
+            L  3  - na żądanie:         N03   N14   N64
+            L  3  - krańcowy:           140^  340^  738^
+            L  9  - dla wysiadających:  140^  190^  340^  412^  512^  527^  738^  E-7^  N66^
+         100303   1      Ul./Pl.: AL.SOLIDARNOŚCI,                  Kier.: PARK PRASKI,                      Y= 52.254361     X= 21.033715
+            L 10  - stały:                4    13    20    23    25^   26    28^  160   190   527
+         100304   4      Ul./Pl.: AL.SOLIDARNOŚCI,                  Kier.: SZWEDZKA,                         Y= 52.255077     X= 21.036032
+            L 11  - stały:              120   135   140   160   162   190   340   517   527   738   E-7
+            L  3  - na żądanie:         N02   N11   N61
+            L  1  - dla wysiadających:  509^
+            L  3  - dla wsiadających:   162^  262   512
+         100305   3      Ul./Pl.: AL.SOLIDARNOŚCI,                  Kier.: PARK PRASKI,                      Y= 52.254036     X= 21.032864
+            L  1  - stały:              509
+            L  6  - na żądanie:         N11   N16   N21   N61   N66   N71
+            L  1  - dla wsiadających:   509^
+         100307   1      Ul./Pl.: TARGOWA,                          Kier.: ZĄBKOWSKA,                        Y= 52.253857     X= 21.035613
+            L  7  - stały:                3     6    13    23^   25    26    28
+         100308   2      Ul./Pl.: TARGOWA,                          Kier.: 11 LISTOPADA,                     Y= 52.255340     X= 21.034227
+            L  7  - stały:                3     4     6    20    23    25    28
+            L  1  - krańcowy:            26^
+         100309   1      Ul./Pl.: WILEŃSKA,                         Kier.: TARGOWA,                          Y= 52.256050     X= 21.035312
+            L  1  - dla wsiadających:   E-7
+      #PR
+#ZA

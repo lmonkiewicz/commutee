@@ -1,4 +1,4 @@
-package com.lmonkiewicz.commutee.routes.parser.warsaw.kd;
+package com.lmonkiewicz.commutee.routes.parser.warsaw.model;
 
 import org.junit.Test;
 

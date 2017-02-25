@@ -1,7 +1,9 @@
-package com.lmonkiewicz.commutee.routes.parser.warsaw.za;
+package com.lmonkiewicz.commutee.routes.parser.warsaw.section;
 
 import com.lmonkiewicz.commutee.routes.parser.warsaw.AbstractSectionReader;
 import com.lmonkiewicz.commutee.routes.parser.warsaw.ZtmUtils;
+import com.lmonkiewicz.commutee.routes.parser.warsaw.model.BusStopGroup;
+import com.lmonkiewicz.commutee.routes.parser.warsaw.model.BusStopGroups;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -15,6 +17,11 @@ public class ZASectionReader extends AbstractSectionReader<BusStopGroups, BusSto
     @Override
     public BusStopGroups result() {
         return data;
+    }
+
+    @Override
+    protected String getSectionCode() {
+        return "ZA";
     }
 
     @Override

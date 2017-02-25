@@ -1,7 +1,8 @@
-package com.lmonkiewicz.commutee.routes.parser.warsaw.kd;
+package com.lmonkiewicz.commutee.routes.parser.warsaw.section;
 
 import com.lmonkiewicz.commutee.routes.parser.warsaw.AbstractSectionReader;
 import com.lmonkiewicz.commutee.routes.parser.warsaw.ZtmUtils;
+import com.lmonkiewicz.commutee.routes.parser.warsaw.model.LinesCalendar;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +26,11 @@ public class KDSectionReader extends AbstractSectionReader<LinesCalendar, LocalD
     @Override
     public LinesCalendar result() {
         return linesCalendar;
+    }
+
+    @Override
+    protected String getSectionCode() {
+        return "KD";
     }
 
     @Override

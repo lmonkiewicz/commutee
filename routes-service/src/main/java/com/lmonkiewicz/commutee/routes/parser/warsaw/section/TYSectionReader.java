@@ -1,4 +1,4 @@
-package com.lmonkiewicz.commutee.routes.parser.warsaw.ty;
+package com.lmonkiewicz.commutee.routes.parser.warsaw.section;
 
 import com.lmonkiewicz.commutee.routes.parser.warsaw.AbstractSectionReader;
 import org.jetbrains.annotations.NotNull;
@@ -16,6 +16,11 @@ public class TYSectionReader extends AbstractSectionReader<Map<String,String>, S
     @Override
     public Map<String,String> result() {
         return result;
+    }
+
+    @Override
+    protected String getSectionCode() {
+        return "TY";
     }
 
     @Override
