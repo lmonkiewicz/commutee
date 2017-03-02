@@ -2,6 +2,7 @@ package com.lmonkiewicz.commutee.routes.parser.warsaw.model;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.NonNull;
 import lombok.Singular;
 
 import java.util.HashMap;
@@ -35,5 +36,9 @@ public class BusStopGroup {
 
     public Stream<BusStop> stream() {
         return busStops.values().stream();
+    }
+
+    public BusStop getBusStop(@NonNull String busStopId) {
+        return busStops.get(busStopId);
     }
 }

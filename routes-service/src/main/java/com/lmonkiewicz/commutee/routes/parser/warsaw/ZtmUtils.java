@@ -86,4 +86,13 @@ public class ZtmUtils {
         }
         return "";
     }
+
+    @NotNull
+    public static String trimTrailingString(@NotNull String input, @NotNull String ending) {
+        int index = input.lastIndexOf(ending);
+        if (index >= 0){
+            return input.substring(0, index);
+        }
+        return input;
+    }
 }

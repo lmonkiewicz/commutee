@@ -35,10 +35,14 @@ public class PRSectionReader extends AbstractSectionReader<Map<String, BusStop>,
     protected BusStop onSectionContentLine(@NotNull String line) {
         switch(ZtmUtils.getIndentationLevel(line, ZtmUtils.DEFAULT_INDENT_SIZE)){
             case BUS_STOP_INDENT: {
-                final List<String> values = ZtmUtils.asColumns(BUS_STOP_INDENT, line, 9, 7, 43, 40, 3, 14, 3, 14);
+                final List<String> values = ZtmUtils.asColumns(BUS_STOP_INDENT, line, 9, 7, 43, 41, 3, 14, 3, 14);
 
                 final BusStop busStop = BusStop.builder()
                         .id(values.get(0))
+                        .name(ZtmUtils.trimTrailingString(values.get(2),","))
+                        .direction(ZtmUtils.trimTrailingString(values.get(3),","))
+                        .y(Double.valueOf(values.get(5)))
+                        .x(Double.valueOf(values.get(7)))
                         .build();
 
                 data.put(busStop.getId(), busStop);

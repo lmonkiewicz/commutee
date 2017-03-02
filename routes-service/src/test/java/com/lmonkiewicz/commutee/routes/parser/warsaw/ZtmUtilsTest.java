@@ -1,5 +1,6 @@
 package com.lmonkiewicz.commutee.routes.parser.warsaw;
 
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 import java.util.List;
@@ -82,6 +83,14 @@ public class ZtmUtilsTest {
         assertEquals(1, ZtmUtils.getIndentationLevel("   One level indent", ZtmUtils.DEFAULT_INDENT_SIZE));
         assertEquals(2, ZtmUtils.getIndentationLevel("      Two levels indent", ZtmUtils.DEFAULT_INDENT_SIZE));
         assertEquals(1, ZtmUtils.getIndentationLevel("     Almost Two levels indent", ZtmUtils.DEFAULT_INDENT_SIZE));
+
+    }
+
+    @Test
+    public void trimsTrailingComaFromString() throws Exception {
+        Assertions.assertThat(ZtmUtils.trimTrailingString("Input String,", ",")).isEqualTo("Input String");
+        Assertions.assertThat(ZtmUtils.trimTrailingString("Input String,,", ",")).isEqualTo("Input String,");
+        Assertions.assertThat(ZtmUtils.trimTrailingString("Input String", ",")).isEqualTo("Input String");
 
     }
 }

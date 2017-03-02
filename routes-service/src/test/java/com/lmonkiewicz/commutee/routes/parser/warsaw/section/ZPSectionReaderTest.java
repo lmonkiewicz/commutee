@@ -1,12 +1,14 @@
 package com.lmonkiewicz.commutee.routes.parser.warsaw.section;
 
 import com.lmonkiewicz.commutee.routes.parser.warsaw.BaseSectionReaderTest;
+import com.lmonkiewicz.commutee.routes.parser.warsaw.model.BusStop;
 import com.lmonkiewicz.commutee.routes.parser.warsaw.model.BusStopGroup;
 import com.lmonkiewicz.commutee.routes.parser.warsaw.model.BusStopGroups;
 import org.junit.Test;
 
 import java.io.BufferedReader;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -43,8 +45,17 @@ public class ZPSectionReaderTest extends BaseSectionReaderTest{
             final BusStopGroups busStopGroups = reader.result();
 
             final BusStopGroup group = busStopGroups.get("1001");
-            assertEquals(9, group.stream().count());
 
+            assertThat(group.stream().count()).isEqualTo(9);
+
+            BusStop busStop = group.getBusStop("100101");
+            assertThat(busStop).isNotNull();
+
+            assertThat(busStop.getId()).isEqualTo("100101");
+            assertThat(busStop.getName()).isEqualTo("Ul./Pl.: TARGOWA");
+            assertThat(busStop.getDirection()).isEqualTo("Kier.: AL.ZIELENIECKA");
+            assertThat(busStop.getX()).isEqualTo(21.044226);
+            assertThat(busStop.getY()).isEqualTo(52.248678);
         }
     }
 

@@ -12,5 +12,9 @@ import lombok.Getter;
 @EqualsAndHashCode
 public class BusStop {
     private String id;
+    private String name;
+    private String direction;
+    private double x;
+    private double y;
 
 }
