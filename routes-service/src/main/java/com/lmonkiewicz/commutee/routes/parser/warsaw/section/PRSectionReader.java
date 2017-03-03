@@ -1,8 +1,10 @@
 package com.lmonkiewicz.commutee.routes.parser.warsaw.section;
 
+import com.google.common.base.Splitter;
 import com.lmonkiewicz.commutee.routes.parser.warsaw.AbstractSectionReader;
 import com.lmonkiewicz.commutee.routes.parser.warsaw.ZtmUtils;
 import com.lmonkiewicz.commutee.routes.parser.warsaw.model.BusStop;
+import com.lmonkiewicz.commutee.routes.parser.warsaw.model.BusStopLineType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -49,6 +51,17 @@ public class PRSectionReader extends AbstractSectionReader<Map<String, BusStop>,
                 return busStop;
             }
             case LINES_INDENT: {
+                final List<String> values = ZtmUtils.asColumns(LINES_INDENT, line, 2, 4, 2, 20, 600);
+
+                final BusStopLineType type = BusStopLineType.fromCode(ZtmUtils.trimTrailingString(values.get(3), ":"));
+                final List<String> linesList = Splitter.fixedLength(6).trimResults().splitToList(values.get(4));
+
+                linesList.forEach(lineCode -> {
+                    if (lineCode.endsWith("^")) {
+                        lineCode = ZtmUtils.trimTrailingString(lineCode, "^");
+                    }
+                    getLastLineResult().addLine(type, lineCode);
+                });
                 break;
             }
         }
