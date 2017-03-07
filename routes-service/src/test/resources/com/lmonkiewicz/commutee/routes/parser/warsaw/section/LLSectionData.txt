@@ -1,0 +1,60 @@
+*LL 328
+   Linia:   1  - LINIA TRAMWAJOWA
+      *TR  5
+         TP-ANN  ,       BANACHA,                        --  ==>  ANNOPOL,                        --       Kier. A   Poz. 0
+            *LW  55
+               BANACHA,                        r 410804  BANACHA,                        -- 04      | 0| 0|
+                                               r 410803  BANACHA,                        -- 03      | 0| 0|
+            #LW
+            *RP  34
+               410804  BANACHA,                        --    Y= 52.209772     X= 20.981883
+                  *TD  3
+                     DP  DZIEŃ POWSZEDNI
+                        *WG  3
+                           G  1   4:  [58e^
+                           G  6   5:  [08e^ [18]  [28e^ [38]  [48e^ [58]
+                           G  8   6:  [08e^ [18]  [24e^ [30]  [36e^ [42]  [48e^ [54]
+                        #WG
+                        *OD 4
+                            4.58  TP-ZEWB/DP/04.58_
+                            5.08  TP-ZEWB/DP/05.08_
+                            5.18  TP-ANN/DP/05.18__
+                            5.28  TP-ZEWB/DP/05.28_
+                        #OD
+                     SB  SOBOTA
+                        *WG  3
+                           G  1   4:  [58]
+                           G  5   5:  [18]  [28]  [38]  [48]  [58]
+                           G  6   6:  [08]  [18]  [28]  [38]  [48]  [58]
+                        #WG
+                        *OD 4
+                            4.58  TP-ANN/SB/04.58__
+                            5.18  TP-ANN/SB/05.18__
+                            5.28  TP-ANN/SB/05.28__
+                            5.38  TP-ANN/SB/05.38__
+                        #OD
+                     DS  ŚWIĘTO
+                        *WG  3
+                           G  3   5:  [02]  [22]  [42]
+                           G  3   6:  [02]  [22]  [42]
+                           G  3   7:  [02]  [22]  [42]
+                        #WG
+                        *OD 4
+                            5.02  TP-ANN/DS/05.02__
+                            5.22  TP-ANN/DS/05.22__
+                            5.42  TP-ANN/DS/05.42__
+                            6.02  TP-ANN/DS/06.02__
+                        #OD
+                  #TD
+                  *OP   7
+                     D   Rozkład ważny od 2017-02-27
+                     S   [] - kurs realizowany przez pojazd niskopodłogowy
+                     S    e - kurs wydłużony do krańca ŻERAŃ WSCHODNI
+                     S    m - kurs tylko do przystanku PL.NARUTOWICZA i dalej do zajezdni
+                     S        "MOKOTÓW"
+                     S    z - kurs tylko do przystanku POWĄZKOWSKA i dalej do zajezdni
+                     S        "ŻOLIBORZ"
+                  #OP
+            #RP
+      #TR
+#LL
