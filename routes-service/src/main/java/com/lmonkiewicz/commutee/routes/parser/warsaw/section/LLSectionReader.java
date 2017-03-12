@@ -46,7 +46,7 @@ public class LLSectionReader extends AbstractSectionReader<Lines, Line> {
                 TRSectionReader trSectionReader = new TRSectionReader();
                 trSectionReader.readSection(in);
                 final Routes result = trSectionReader.result();
-                getLastLineResult().setRoutes(result);
+                getLastLineResult().ifPresent(last -> last.setRoutes(result));
                 break;
             }
         }

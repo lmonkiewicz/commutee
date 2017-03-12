@@ -6,6 +6,7 @@ import org.jetbrains.annotations.Nullable;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Created by lmonkiewicz on 2017-02-19.
@@ -56,7 +57,7 @@ public abstract class AbstractSectionReader<T, B> implements SectionReader<T> {
         this.lastLineResult = lastLineResult;
     }
 
-    public B getLastLineResult() {
-        return lastLineResult;
+    public Optional<B> getLastLineResult() {
+        return Optional.ofNullable(lastLineResult);
     }
 }

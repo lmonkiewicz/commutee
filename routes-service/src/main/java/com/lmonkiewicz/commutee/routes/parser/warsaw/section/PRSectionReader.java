@@ -56,12 +56,10 @@ public class PRSectionReader extends AbstractSectionReader<Map<String, BusStop>,
                 final BusStopLineType type = BusStopLineType.fromCode(ZtmUtils.trimTrailingString(values.get(3), ":"));
                 final List<String> linesList = Splitter.fixedLength(6).trimResults().splitToList(values.get(4));
 
-                linesList.forEach(lineCode -> {
-                    if (lineCode.endsWith("^")) {
-                        lineCode = ZtmUtils.trimTrailingString(lineCode, "^");
-                    }
-                    getLastLineResult().addLine(type, lineCode);
-                });
+                linesList.stream()
+                        .map(lineCode -> lineCode.endsWith("^") ? ZtmUtils.trimTrailingString(lineCode, "^") : lineCode)
+                        .forEachOrdered(lineCode -> getLastLineResult()
+                                .ifPresent(last -> last.addLine(type, lineCode)));
                 break;
             }
         }

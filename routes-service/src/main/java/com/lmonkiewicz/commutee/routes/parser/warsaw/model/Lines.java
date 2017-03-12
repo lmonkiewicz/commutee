@@ -20,12 +20,8 @@ public class Lines {
         lines.put(line.getNumber(), line);
     }
 
-    public Optional<Line> get(String number){
-        if (lines.containsKey(number)) {
-            return Optional.of(lines.get(number));
-        } else {
-            return Optional.empty();
-        }
+    public Optional<Line> get(@NotNull String number){
+        return Optional.ofNullable(lines.get(number));
     }
 
     public Stream<Line> stream(){

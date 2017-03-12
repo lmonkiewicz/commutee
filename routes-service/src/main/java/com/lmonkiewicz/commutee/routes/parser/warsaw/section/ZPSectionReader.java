@@ -59,7 +59,7 @@ public class ZPSectionReader extends AbstractSectionReader<BusStopGroups, BusSto
 
             final Map<String, BusStop> busStops = prSectionReader.result();
 
-            getLastLineResult().setBusStops(busStops);
+            getLastLineResult().ifPresent(last -> last.setBusStops(busStops));
         }
     }
 

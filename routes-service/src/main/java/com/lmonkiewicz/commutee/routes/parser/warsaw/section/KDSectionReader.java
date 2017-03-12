@@ -43,7 +43,7 @@ public class KDSectionReader extends AbstractSectionReader<LinesCalendar, LocalD
             }
             case LINE_LEVEL: {
                 final List<String> values = ZtmUtils.asColumns(2, line, 6, 2);
-                linesCalendar.set(getLastLineResult(), values.get(0), values.get(1));
+                getLastLineResult().ifPresent(last -> linesCalendar.set(last, values.get(0), values.get(1)));
                 break;
             }
             default: {
