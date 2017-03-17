@@ -3,6 +3,7 @@ package com.lmonkiewicz.commutee.routes.parser.warsaw.section;
 import com.lmonkiewicz.commutee.routes.parser.warsaw.AbstractSectionReader;
 import com.lmonkiewicz.commutee.routes.parser.warsaw.SectionReaderException;
 import com.lmonkiewicz.commutee.routes.parser.warsaw.ZtmUtils;
+import com.lmonkiewicz.commutee.routes.parser.warsaw.model.Courses;
 import com.lmonkiewicz.commutee.routes.parser.warsaw.model.Line;
 import com.lmonkiewicz.commutee.routes.parser.warsaw.model.Lines;
 import com.lmonkiewicz.commutee.routes.parser.warsaw.model.Routes;
@@ -47,6 +48,13 @@ public class LLSectionReader extends AbstractSectionReader<Lines, Line> {
                 trSectionReader.readSection(in);
                 final Routes result = trSectionReader.result();
                 getLastLineResult().ifPresent(last -> last.setRoutes(result));
+                break;
+            }
+            case "WK": {
+                final WKSectionReader wkSectionReader = new WKSectionReader();
+                wkSectionReader.readSection(in);
+                final Courses courses = wkSectionReader.result();
+                getLastLineResult().ifPresent(last -> last.setCourses(courses));
                 break;
             }
         }

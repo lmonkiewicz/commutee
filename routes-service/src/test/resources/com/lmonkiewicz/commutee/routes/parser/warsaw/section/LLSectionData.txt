@@ -57,4 +57,18 @@
                   #OP
             #RP
       #TR
+      *WK 12
+         TD-3ANNO/DP/04.30  324007 DP  4.32  B
+         TD-3ANNO/DP/04.30  311603 DP  4.33  B
+         TD-3ANNO/DP/04.30  311503 DP  4.34
+         TD-3ANNO/DP/04.30  311403 DP  4.35
+         TD-3ANNO/DP/04.30  300705 SB  4.37
+         TD-3ANNO/DP/04.30  108703 SB  5.21  P
+         TD-3ANNO/DP/13.03  324007 DP 13.05  B
+         TD-3ANNO/DP/13.03  311603 DP 13.07  B
+         TD-3ANNO/DP/13.03  311503 DP 13.08
+         TD-3ANNO/DP/13.03  311403 DP 13.09
+         TD-3ANNO/DP/13.03  300705 DP 13.11
+         TD-3ANNO/DP/13.03  300704 DP 13.12  P
+      #WK
 #LL
