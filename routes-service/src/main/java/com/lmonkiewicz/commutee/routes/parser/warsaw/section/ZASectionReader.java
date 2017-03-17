@@ -21,7 +21,7 @@ public class ZASectionReader extends AbstractSectionReader<BusStopGroups, BusSto
 
     @Override
     protected String getSectionCode() {
-        return "ZA";
+        return Sections.ZA_BusStopGroupsList;
     }
 
     @Override

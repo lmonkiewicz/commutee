@@ -39,13 +39,13 @@ public class TDSectionReader extends AbstractSectionReader<RoutePointTimetables,
     @Override
     protected void onSectionStart(@NotNull String sectionCode, @NotNull BufferedReader in) throws SectionReaderException {
         switch (sectionCode) {
-            case "WG": {
+            case Sections.WG_DepartTimes: {
                 WGSectionReader reader = new WGSectionReader();
                 reader.readSection(in);
                 getLastLineResult().ifPresent(last -> last.setDepartTimes(reader.result()));
                 break;
             }
-            case "OD": {
+            case Sections.OD_Departures: {
                 ODSectionReader reader = new ODSectionReader();
                 reader.readSection(in);
                 getLastLineResult().ifPresent(last -> last.setCourses(reader.result()));
@@ -56,6 +56,6 @@ public class TDSectionReader extends AbstractSectionReader<RoutePointTimetables,
 
     @Override
     protected String getSectionCode() {
-        return "TD";
+        return Sections.TD_Timetables;
     }
 }

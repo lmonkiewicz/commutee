@@ -30,7 +30,7 @@ public class KDSectionReader extends AbstractSectionReader<LinesCalendar, LocalD
 
     @Override
     protected String getSectionCode() {
-        return "KD";
+        return Sections.KD_LinesCalendar;
     }
 
     @Override

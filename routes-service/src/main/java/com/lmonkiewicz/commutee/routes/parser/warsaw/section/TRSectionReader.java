@@ -48,14 +48,14 @@ public class TRSectionReader extends AbstractSectionReader<Routes, Route>{
     @Override
     protected void onSectionStart(@NotNull String sectionCode, @NotNull BufferedReader in) throws SectionReaderException {
         switch (sectionCode) {
-            case "LW": {
+            case Sections.LW_RouteDefinition: {
                 LWSectionReader lwSectionReader = new LWSectionReader();
                 lwSectionReader.readSection(in);
                 final RouteDefinition result = lwSectionReader.result();
                 getLastLineResult().ifPresent(last -> last.setRouteDefinition(result));
                 break;
             }
-            case "RP": {
+            case Sections.RP_RoutePoints: {
                 RPSectionReader rpSectionReader = new RPSectionReader();
                 rpSectionReader.readSection(in);
                 final RoutePoints result = rpSectionReader.result();
@@ -67,6 +67,6 @@ public class TRSectionReader extends AbstractSectionReader<Routes, Route>{
 
     @Override
     protected String getSectionCode() {
-        return "TR";
+        return Sections.TR_Routes;
     }
 }

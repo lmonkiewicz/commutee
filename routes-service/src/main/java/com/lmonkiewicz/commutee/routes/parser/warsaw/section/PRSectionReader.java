@@ -29,7 +29,7 @@ public class PRSectionReader extends AbstractSectionReader<Map<String, BusStop>,
 
     @Override
     protected String getSectionCode() {
-        return "PR";
+        return Sections.PR_BusStops;
     }
 
     @Nullable

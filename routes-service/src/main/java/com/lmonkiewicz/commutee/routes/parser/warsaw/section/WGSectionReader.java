@@ -45,6 +45,6 @@ public class WGSectionReader extends AbstractSectionReader<DepartTimes, List<Int
 
     @Override
     protected String getSectionCode() {
-        return "WG";
+        return Sections.WG_DepartTimes;
     }
 }

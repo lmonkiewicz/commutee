@@ -14,6 +14,7 @@ import java.util.Map;
  */
 public class SMSectionReader extends AbstractSectionReader<Map<String, String>, String> {
 
+
     private Map<String, String> data = new HashMap<>();
 
     @Override
@@ -32,6 +33,6 @@ public class SMSectionReader extends AbstractSectionReader<Map<String, String>, 
 
     @Override
     protected String getSectionCode() {
-        return "SM";
+        return Sections.SM_TownCodes;
     }
 }

@@ -24,7 +24,7 @@ public class KASectionReader extends AbstractSectionReader<RoutesCalendar, Local
 
     @Override
     protected String getSectionCode() {
-        return "KA";
+        return Sections.KA_RoutesCalendar;
     }
 
     @Override

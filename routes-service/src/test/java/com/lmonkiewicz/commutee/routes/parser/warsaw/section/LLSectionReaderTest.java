@@ -177,8 +177,12 @@ public class LLSectionReaderTest extends BaseSectionReaderTest {
             final String COURSE_ID = "TD-3ANNO/DP/04.30";
             assertThat(courses.streamById(COURSE_ID)).hasSize(6);
 
-            assertThat(courses.streamById(COURSE_ID).map(Course::getStopId)).containsExactly("324007","311603", "311503", "311403", "300705", "108703");
-            assertThat(courses.streamById(COURSE_ID).map(Course::getDayType)).containsExactly("DP","DP", "DP", "DP", "SB", "SB");
+            assertThat(courses.streamById(COURSE_ID).map(Course::getStopId)).containsExactly(
+                    "324007","311603", "311503", "311403", "300705", "108703"
+            );
+            assertThat(courses.streamById(COURSE_ID).map(Course::getDayType)).containsExactly(
+                    "DP","DP", "DP", "DP", "SB", "SB"
+            );
             assertThat(courses.streamById(COURSE_ID).map(Course::getDepartTime)).containsExactly(
                     LocalTime.of(4, 32), LocalTime.of(4, 33), LocalTime.of(4, 34), LocalTime.of(4, 35), LocalTime.of(4, 37), LocalTime.of(5,21)
             );

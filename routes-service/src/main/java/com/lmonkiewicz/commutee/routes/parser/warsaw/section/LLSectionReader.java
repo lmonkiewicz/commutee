@@ -43,14 +43,14 @@ public class LLSectionReader extends AbstractSectionReader<Lines, Line> {
     @Override
     protected void onSectionStart(@NotNull String sectionCode, @NotNull BufferedReader in) throws SectionReaderException {
         switch(sectionCode){
-            case "TR": {
+            case Sections.TR_Routes: {
                 TRSectionReader trSectionReader = new TRSectionReader();
                 trSectionReader.readSection(in);
                 final Routes result = trSectionReader.result();
                 getLastLineResult().ifPresent(last -> last.setRoutes(result));
                 break;
             }
-            case "WK": {
+            case Sections.WK_Courses: {
                 final WKSectionReader wkSectionReader = new WKSectionReader();
                 wkSectionReader.readSection(in);
                 final Courses courses = wkSectionReader.result();
@@ -62,6 +62,6 @@ public class LLSectionReader extends AbstractSectionReader<Lines, Line> {
 
     @Override
     protected String getSectionCode() {
-        return "LL";
+        return Sections.LL_Lines;
     }
 }

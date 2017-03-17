@@ -43,6 +43,6 @@ public class WKSectionReader extends AbstractSectionReader<Courses, Course>{
 
     @Override
     protected String getSectionCode() {
-        return "WK";
+        return Sections.WK_Courses;
     }
 }

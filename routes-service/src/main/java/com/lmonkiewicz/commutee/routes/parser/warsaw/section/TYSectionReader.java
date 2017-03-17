@@ -20,7 +20,7 @@ public class TYSectionReader extends AbstractSectionReader<Map<String,String>, S
 
     @Override
     protected String getSectionCode() {
-        return "TY";
+        return Sections.TY_DayTypes;
     }
 
     @Override

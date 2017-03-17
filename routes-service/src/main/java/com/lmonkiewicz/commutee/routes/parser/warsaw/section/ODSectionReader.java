@@ -34,6 +34,6 @@ public class ODSectionReader extends AbstractSectionReader<ListMultimap<String, 
 
     @Override
     protected String getSectionCode() {
-        return "OD";
+        return Sections.OD_Departures;
     }
 }

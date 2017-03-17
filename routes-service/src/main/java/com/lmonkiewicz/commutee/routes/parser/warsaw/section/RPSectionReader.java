@@ -44,13 +44,13 @@ public class RPSectionReader extends AbstractSectionReader<RoutePoints, RoutePoi
     @Override
     protected void onSectionStart(@NotNull String sectionCode, @NotNull BufferedReader in) throws SectionReaderException {
         switch (sectionCode) {
-            case "TD": {
+            case Sections.TD_Timetables: {
                 TDSectionReader reader = new TDSectionReader();
                 reader.readSection(in);
                 getLastLineResult().ifPresent(routePoint -> routePoint.setTimetables(reader.result()));
                 break;
             }
-            case "OP": {
+            case Sections.OP_Metadata: {
                 OPSectionReader reader = new OPSectionReader();
                 reader.readSection(in);
                 getLastLineResult().ifPresent(routePoint -> routePoint.setMetadata(reader.result()));
@@ -61,6 +61,6 @@ public class RPSectionReader extends AbstractSectionReader<RoutePoints, RoutePoi
 
     @Override
     protected String getSectionCode() {
-        return "RP";
+        return Sections.RP_RoutePoints;
     }
 }

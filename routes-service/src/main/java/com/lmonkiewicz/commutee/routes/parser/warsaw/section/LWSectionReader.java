@@ -50,6 +50,6 @@ public class LWSectionReader extends AbstractSectionReader<RouteDefinition,Route
 
     @Override
     protected String getSectionCode() {
-        return "LW";
+        return Sections.LW_RouteDefinition;
     }
 }

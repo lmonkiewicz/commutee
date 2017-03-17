@@ -69,6 +69,6 @@ public class OPSectionReader extends AbstractSectionReader<Metadata, String>{
 
     @Override
     protected String getSectionCode() {
-        return "OP";
+        return Sections.OP_Metadata;
     }
 }

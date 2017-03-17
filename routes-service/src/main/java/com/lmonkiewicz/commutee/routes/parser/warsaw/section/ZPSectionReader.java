@@ -18,9 +18,6 @@ import java.util.Objects;
  */
 public class ZPSectionReader extends AbstractSectionReader<BusStopGroups, BusStopGroup> {
 
-
-    private static final String PR_SECTION_CODE = "PR";
-
     private final BusStopGroups data = new BusStopGroups();
 
 
@@ -53,7 +50,7 @@ public class ZPSectionReader extends AbstractSectionReader<BusStopGroups, BusSto
 
     @Override
     protected void onSectionStart(@NotNull String sectionCode, @NotNull BufferedReader in) throws SectionReaderException {
-        if (Objects.equals(PR_SECTION_CODE, sectionCode)){
+        if (Objects.equals(Sections.PR_BusStops, sectionCode)){
             PRSectionReader prSectionReader = new PRSectionReader();
             prSectionReader.readSection(in);
 
@@ -65,7 +62,7 @@ public class ZPSectionReader extends AbstractSectionReader<BusStopGroups, BusSto
 
     @Override
     protected String getSectionCode() {
-        return "ZP";
+        return Sections.ZP_BusStopGroups;
     }
 
     @Override
