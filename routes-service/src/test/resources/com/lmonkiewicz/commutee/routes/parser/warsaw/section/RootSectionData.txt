@@ -1,0 +1,57 @@
+*TY  1
+   D1   PONIEDZIAŁEK
+#TY
+*KA  1
+   2015-12-01    5    D2  N2  DP  NS  NO
+#KA
+*KD   1
+   2017-02-25  1
+        1   SB
+#KD
+*ZA 1
+   4009   1 SIERPNIA,                         --  WARSZAWA
+#ZA
+*ZP 1
+   1001   KIJOWSKA,                        --  WARSZAWA
+      *PR  1
+         100101   1      Ul./Pl.: TARGOWA,                          Kier.: AL.ZIELENIECKA,                   Y= 52.248678     X= 21.044226
+            L  7  - stały:              123   138   146   147   166   509   517
+      #PR
+#ZP
+*SM 1
+   AL   ALEKSANDRÓW
+#SM
+*LL 1
+   Linia:   1  - LINIA TRAMWAJOWA
+      *TR  1
+         TP-ANN  ,       BANACHA,                        --  ==>  ANNOPOL,                        --       Kier. A   Poz. 0
+            *LW  1
+               BANACHA,                        r 410804  BANACHA,                        -- 04      | 0| 0|
+            #LW
+            *RP  1
+               410804  BANACHA,                        --    Y= 52.209772     X= 20.981883
+                  *TD  1
+                     DP  DZIEŃ POWSZEDNI
+                        *WG  1
+                           G  1   4:  [58e^
+                        #WG
+                        *OD 1
+                            4.58  TP-ZEWB/DP/04.58_
+                        #OD
+                  #TD
+                  *OP   7
+                     D   Rozkład ważny od 2016-11-26
+                     S   [] - kurs realizowany przez pojazd niskopodłogowy
+                     S    e - kurs wydłużony do krańca ŻERAŃ WSCHODNI
+                     S    m - kurs tylko do przystanku PL.NARUTOWICZA i dalej do zajezdni
+                     S        "MOKOTÓW"
+                     S    z - kurs tylko do przystanku POWĄZKOWSKA i dalej do zajezdni
+                     S        "ŻOLIBORZ"
+                  #OP
+            #RP
+      #TR
+      *WK  1
+         TP-DOM-B/DP/14.32  300708 DP 14.32
+      #WK
+#LL
+####
