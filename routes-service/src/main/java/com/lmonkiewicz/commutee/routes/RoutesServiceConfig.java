@@ -1,10 +1,5 @@
 package com.lmonkiewicz.commutee.routes;
 
-import com.lmonkiewicz.commutee.routes.adapter.out.connection.Neo4jConnectionStoreService;
-import com.lmonkiewicz.commutee.routes.domain.in.loader.TimetableDataLoader;
-import com.lmonkiewicz.commutee.routes.domain.out.connection.ConnectionsStoreService;
-import com.lmonkiewicz.commutee.routes.domain.service.TimetablesImportService;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -13,13 +8,16 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RoutesServiceConfig {
 
-    @Bean
-    ConnectionsStoreService connectionsStoreService(){
-        return new Neo4jConnectionStoreService();
-    }
+//    @Bean
+//    ConnectionsStore connectionsStoreService(){
+//        return new Neo4JConnectionStore();
+//    }
 
-    @Bean
-    TimetableDataLoader timetableDataLoader(ConnectionsStoreService connectionsStoreService){
-        return new TimetablesImportService(connectionsStoreService);
-    }
+//    @Bean
+//    TimetablesStore timetablesStore() { return new Neo4JTimetablesStore(); }
+
+//    @Bean
+//    TimetableDataLoader timetableDataLoader(ConnectionsStore connectionsStore, TimetablesStore timetablesStore){
+//        return new TimetablesImportService(connectionsStore, timetablesStore);
+//    }
 }

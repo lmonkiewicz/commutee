@@ -1,7 +1,9 @@
 package com.lmonkiewicz.commutee.routes.domain.model;
 
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -13,9 +15,11 @@ import java.time.LocalTime;
  */
 @Builder
 @Getter
+@EqualsAndHashCode(exclude = {"valid"})
 public class ConnectionData {
 
     @NotNull
+    @Builder.Default
     private final Type type = Type.WALK;
 
     @Nullable
@@ -28,10 +32,15 @@ public class ConnectionData {
     private final LocalDate validTo;
 
     @NotNull
+    @Builder.Default
     private final CourseType courseType = CourseType.WEEKDAY;
 
     @Nullable
     private final LocalTime departureTime;
+
+    @Setter
+    @Builder.Default
+    private boolean valid = true;
 
     public boolean hasDepartureTime(){
         return departureTime != null;

@@ -5,7 +5,8 @@ import com.lmonkiewicz.commutee.routes.domain.in.loader.exception.BusStopNotFoun
 import com.lmonkiewicz.commutee.routes.domain.in.loader.exception.LoaderException;
 import com.lmonkiewicz.commutee.routes.domain.model.BusStopData;
 import com.lmonkiewicz.commutee.routes.domain.model.ConnectionData;
-import com.lmonkiewicz.commutee.routes.domain.out.connection.ConnectionsStoreService;
+import com.lmonkiewicz.commutee.routes.domain.out.connection.ConnectionsStore;
+import com.lmonkiewicz.commutee.routes.domain.out.timetable.TimetablesStore;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -14,19 +15,38 @@ import org.jetbrains.annotations.NotNull;
 public class TimetablesImportService implements TimetableDataLoader {
 
 
-    private final ConnectionsStoreService connectionsStoreService;
+    private final ConnectionsStore connectionsStore;
+    private final TimetablesStore timetablesStore;
 
-    public TimetablesImportService(ConnectionsStoreService connectionsStoreService) {
-        this.connectionsStoreService = connectionsStoreService;
+    public TimetablesImportService(
+            ConnectionsStore connectionsStore,
+            TimetablesStore timetablesStore) {
+
+        this.connectionsStore = connectionsStore;
+        this.timetablesStore = timetablesStore;
     }
 
     @Override
     public void updateBusStop(@NotNull BusStopData busStop) throws LoaderException {
-        if (connectionsStoreService.findBusStopById(busStop.getId()).isPresent()){
-            connectionsStoreService.updateBusStopData(busStop);
+        updateConnectionBusStop(busStop);
+        updateTimetableBusStop(busStop);
+    }
+
+    private void updateTimetableBusStop(@NotNull BusStopData busStop) {
+        if (timetablesStore.findBusStopById(busStop.getId()).isPresent()) {
+            timetablesStore.updateBusStopData(busStop);
         }
         else {
-            connectionsStoreService.createBusStopData(busStop);
+            timetablesStore.createBusStopData(busStop);
+        }
+    }
+
+    private void updateConnectionBusStop(@NotNull BusStopData busStop) {
+        if (connectionsStore.findBusStopById(busStop.getId()).isPresent()){
+            connectionsStore.updateBusStopData(busStop);
+        }
+        else {
+            connectionsStore.createBusStopData(busStop);
         }
     }
 
@@ -34,26 +54,32 @@ public class TimetablesImportService implements TimetableDataLoader {
     public void updateConnection(@NotNull String from, @NotNull String to, @NotNull ConnectionData connectionData)
             throws LoaderException {
 
-        final BusStopData fromBS = connectionsStoreService.findBusStopById(from)
+        final BusStopData fromBS = connectionsStore.findBusStopById(from)
                 .orElseThrow(() -> new BusStopNotFoundException(from));
 
-        final BusStopData toBS = connectionsStoreService.findBusStopById(to)
+        final BusStopData toBS = connectionsStore.findBusStopById(to)
                 .orElseThrow(() -> new BusStopNotFoundException(to));
 
-        connectionsStoreService.createConnection(fromBS, toBS, connectionData);
+        if (connectionsStore.findBusStopConnection(fromBS, toBS, connectionData).isPresent()) {
+            connectionsStore.updateConnection(fromBS, toBS, connectionData);
+        }
+        else {
+            connectionsStore.createConnection(fromBS, toBS, connectionData);
+        }
+        timetablesStore.createDeparture(fromBS, connectionData);
 
     }
 
     @Override
     public void start() throws LoaderException {
-        connectionsStoreService.markAllConnectionsAsInvalid();
-        connectionsStoreService.markAllBusStopsAsInvalid();
+        connectionsStore.markAllConnectionsAsInvalid();
+        connectionsStore.markAllBusStopsAsInvalid();
     }
 
     @Override
     public void finish() throws LoaderException {
-        connectionsStoreService.deleteInvalidConnections();
-        connectionsStoreService.deleteInvalidBusStops();
+        connectionsStore.deleteInvalidConnections();
+        connectionsStore.deleteInvalidBusStops();
 
     }
 }

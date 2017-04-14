@@ -2,7 +2,7 @@ package com.lmonkiewicz.commutee.routes.adapter.out.connection;
 
 import com.lmonkiewicz.commutee.routes.domain.model.BusStopData;
 import com.lmonkiewicz.commutee.routes.domain.model.ConnectionData;
-import com.lmonkiewicz.commutee.routes.domain.out.connection.ConnectionsStoreService;
+import com.lmonkiewicz.commutee.routes.domain.out.connection.ConnectionsStore;
 import org.jetbrains.annotations.NotNull;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
@@ -11,7 +11,7 @@ import java.util.Optional;
 /**
  * Created by lmonkiewicz on 11.04.2017.
  */
-public class Neo4jConnectionStoreService implements ConnectionsStoreService {
+public class Neo4JConnectionStore implements ConnectionsStore {
     @Override
     public Optional<BusStopData> findBusStopById(@NotNull String id) {
         return Optional.empty();
@@ -50,5 +50,15 @@ public class Neo4jConnectionStoreService implements ConnectionsStoreService {
     @Override
     public void createBusStopData(@NotNull BusStopData busStop) {
         throw new NotImplementedException();
+    }
+
+    @Override
+    public Optional<ConnectionData> findBusStopConnection(@NotNull BusStopData fromBS, @NotNull BusStopData toBS, @NotNull ConnectionData code) {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public void updateConnection(@NotNull BusStopData fromBS, @NotNull BusStopData toBS, @NotNull ConnectionData connectionData) {
+
     }
 }

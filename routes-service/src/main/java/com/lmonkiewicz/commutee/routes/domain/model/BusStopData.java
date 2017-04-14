@@ -3,6 +3,7 @@ package com.lmonkiewicz.commutee.routes.domain.model;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -10,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
  */
 @Builder
 @Getter
-@EqualsAndHashCode
+@EqualsAndHashCode(exclude = {"valid"})
 public class BusStopData {
 
     @NotNull
@@ -22,5 +23,9 @@ public class BusStopData {
 
     private final double posX;
     private final double posY;
+
+    @Setter
+    @Builder.Default
+    private boolean valid = true;
 
 }
