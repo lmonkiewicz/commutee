@@ -36,7 +36,18 @@ public class InMemoryTimetablesStore implements TimetablesStore {
 
     @Override
     public void createDeparture(@NotNull BusStopData fromBS, @NotNull ConnectionData connectionData) {
-        departures.putIfAbsent(fromBS.getId(), new ArrayList<>());
-        departures.get(fromBS.getId()).add(connectionData);
+        final String id = id(fromBS.getId(), connectionData.getCode());
+        departures.putIfAbsent(id, new ArrayList<>());
+        departures.get(id).add(connectionData);
+    }
+
+    public List<ConnectionData> get(String busStopId, String connectionCode) {
+        final String id = id(busStopId, connectionCode);
+        return departures.getOrDefault(id, Collections.emptyList());
+    }
+
+
+    private String id(String fromId, String code) {
+        return String.format("%s_@_%s", fromId, code);
     }
 }

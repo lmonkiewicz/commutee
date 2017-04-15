@@ -137,6 +137,7 @@ public class TimetablesImportServiceTest {
         // then
         assertThat(connectionStore.getConnections()).hasSize(1);
         assertThat(connectionStore.get(STOP_1, STOP_2, connection.getCode())).containsExactly(connection);
+        assertThat(timetablesStore.get(STOP_1, connection.getCode())).containsExactly(connection);
     }
 
     @Test
@@ -166,6 +167,10 @@ public class TimetablesImportServiceTest {
         assertThat(connectionStore.get(STOP_1, STOP_2, "FAKE")).isEmpty();
         assertThat(connectionStore.get(STOP_1, "FAKE", "FAKE")).isEmpty();
         assertThat(connectionStore.get("FAKE", "FAKE", "FAKE")).isEmpty();
+
+        assertThat(timetablesStore.get(STOP_1, connection1.getCode())).containsExactly(connection1);
+        assertThat(timetablesStore.get(STOP_1, connection2.getCode())).containsExactly(connection2, connection3);
+
     }
 
     private ConnectionData connection(String code, LocalTime departureTime, LocalDate validSince, ConnectionData.Type type, ConnectionData.CourseType courseType) {
