@@ -1,7 +1,7 @@
-package com.lmonkiewicz.commutee.routes.parser.warsaw.section;
+package com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.section;
 
-import com.lmonkiewicz.commutee.routes.parser.warsaw.BaseSectionReaderTest;
-import com.lmonkiewicz.commutee.routes.parser.warsaw.model.ZtmData;
+import com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.BaseSectionReaderTest;
+import com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.model.ZtmData;
 import org.junit.Test;
 
 import java.io.BufferedReader;

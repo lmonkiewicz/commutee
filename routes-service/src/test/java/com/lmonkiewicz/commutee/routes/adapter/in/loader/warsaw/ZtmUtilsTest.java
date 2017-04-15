@@ -1,6 +1,5 @@
-package com.lmonkiewicz.commutee.routes.parser.warsaw;
+package com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw;
 
-import com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.ZtmUtils;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 

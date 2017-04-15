@@ -1,9 +1,9 @@
-package com.lmonkiewicz.commutee.routes.parser.warsaw.section;
+package com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.section;
 
-import com.lmonkiewicz.commutee.routes.parser.warsaw.AbstractSectionReader;
-import com.lmonkiewicz.commutee.routes.parser.warsaw.ZtmUtils;
-import com.lmonkiewicz.commutee.routes.parser.warsaw.model.Course;
-import com.lmonkiewicz.commutee.routes.parser.warsaw.model.Courses;
+import com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.AbstractSectionReader;
+import com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.ZtmUtils;
+import com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.model.Course;
+import com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.model.Courses;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by lmonkiewicz on 17.03.2017.
  */
-public class WKSectionReader extends AbstractSectionReader<Courses, Course>{
+public class WKSectionReader extends AbstractSectionReader<Courses, Course> {
 
     private Courses courses = new Courses();
 

@@ -1,4 +1,4 @@
-package com.lmonkiewicz.commutee.routes.parser.warsaw;
+package com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

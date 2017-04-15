@@ -1,4 +1,4 @@
-package com.lmonkiewicz.commutee.routes.parser.warsaw.model;
+package com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.model;
 
 import lombok.Builder;
 import lombok.EqualsAndHashCode;

@@ -3,6 +3,7 @@ package com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.section;
 import com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.AbstractSectionReader;
 import com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.SectionReaderException;
 import com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.ZtmUtils;
+import com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.model.Courses;
 import com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.model.Line;
 import com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.model.Lines;
 import com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.model.Routes;

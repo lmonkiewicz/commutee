@@ -1,8 +1,8 @@
-package com.lmonkiewicz.commutee.routes.parser.warsaw.section;
+package com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.section;
 
-import com.lmonkiewicz.commutee.routes.parser.warsaw.AbstractSectionReader;
-import com.lmonkiewicz.commutee.routes.parser.warsaw.SectionReaderException;
-import com.lmonkiewicz.commutee.routes.parser.warsaw.model.ZtmData;
+import com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.AbstractSectionReader;
+import com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.SectionReaderException;
+import com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.model.ZtmData;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedReader;
