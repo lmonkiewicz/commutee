@@ -1,10 +1,6 @@
 package com.lmonkiewicz.commutee.routes.domain.model;
 
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import org.jetbrains.annotations.NotNull;
+import lombok.*;
 
 /**
  * Created by lmonkiewicz on 11.04.2017.
@@ -14,11 +10,11 @@ import org.jetbrains.annotations.NotNull;
 @EqualsAndHashCode(exclude = {"valid"})
 public class BusStopData {
 
-    @NotNull
+    @NonNull
     private final String id;
-    @NotNull
+    @NonNull
     private final String name;
-    @NotNull
+    @NonNull
     private final String direction;
 
     private final double posX;

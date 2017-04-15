@@ -19,7 +19,7 @@ public class InMemoryConnectionStore implements ConnectionsStore {
     private Map<String, BusStopData> data = new HashMap<>();
 
     @Getter
-    private Map<String, Map<String, ConnectionData>> connections = new HashMap<>();
+    private Map<String, ConnectionData> connections = new HashMap<>();
 
     @Override
     public Optional<BusStopData> findBusStopById(@NotNull String id) {
@@ -27,16 +27,13 @@ public class InMemoryConnectionStore implements ConnectionsStore {
     }
 
     @Override
-    public void createConnection(@NotNull BusStopData fromBS, @NotNull BusStopData toBS, @NotNull ConnectionData data) {
-        connections.putIfAbsent(fromBS.getId(), new HashMap<>());
-        connections.get(fromBS.getId()).put(toBS.getId(), data);
+    public void createConnection(@NotNull BusStopData fromBS, @NotNull BusStopData toBS, @NotNull ConnectionData connectionData) {
+        connections.putIfAbsent(id(fromBS, toBS, connectionData), connectionData);
     }
 
     @Override
     public void markAllConnectionsAsInvalid() {
-        connections.values()
-                .forEach(con2 -> con2.values()
-                    .forEach(connectionData -> connectionData.setValid(false)));
+        connections.values().forEach(connectionData -> connectionData.setValid(false));
     }
 
     @Override
@@ -46,9 +43,7 @@ public class InMemoryConnectionStore implements ConnectionsStore {
 
     @Override
     public void deleteInvalidConnections() {
-        connections.values()
-                .forEach(innerMap -> innerMap.values()
-                        .removeIf(connectionData -> !connectionData.isValid()));
+        connections.values().removeIf(connectionData -> !connectionData.isValid());
     }
 
     @Override
@@ -67,14 +62,25 @@ public class InMemoryConnectionStore implements ConnectionsStore {
     }
 
     @Override
-    public Optional<ConnectionData> findBusStopConnection(@NotNull BusStopData fromBS, @NotNull BusStopData toBS, @NotNull ConnectionData code) {
-        final Map<String, ConnectionData> to = connections.get(fromBS.getId());
-        return Optional.ofNullable(to != null ? to.get(toBS.getId()) : null);
+    public Optional<ConnectionData> findBusStopConnection(@NotNull BusStopData fromBS, @NotNull BusStopData toBS, @NotNull ConnectionData connectionData) {
+        return get(fromBS.getId(), toBS.getId(), connectionData.getCode());
     }
 
     @Override
     public void updateConnection(@NotNull BusStopData fromBS, @NotNull BusStopData toBS, @NotNull ConnectionData connectionData) {
-        connections.putIfAbsent(fromBS.getId(), new HashMap<>());
-        connections.get(fromBS.getId()).put(toBS.getId(), connectionData);
+        connections.put(id(fromBS, toBS, connectionData), connectionData);
     }
+
+    public Optional<ConnectionData> get(String fromId, String toId, String code){
+        return Optional.ofNullable(connections.get(id(fromId, toId, code)));
+    }
+
+    private String id(@NotNull BusStopData fromBS, @NotNull BusStopData toBS, @NotNull ConnectionData connectionData) {
+        return id(fromBS.getId(), toBS.getId(), connectionData.getCode());
+    }
+
+    private String id(String fromId, String toId, String code) {
+        return String.format("%s_@_%s_@_%s", fromId, toId, code);
+    }
+
 }
