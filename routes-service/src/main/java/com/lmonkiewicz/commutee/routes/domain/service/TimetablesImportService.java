@@ -51,7 +51,7 @@ public class TimetablesImportService implements TimetableDataLoader {
     }
 
     @Override
-    public void updateConnection(@NotNull String from, @NotNull String to, @NotNull ConnectionData connectionData)
+    public void createConnection(@NotNull String from, @NotNull String to, @NotNull ConnectionData connectionData)
             throws LoaderException {
 
         final BusStopData fromBS = connectionsStore.findBusStopById(from)
@@ -60,12 +60,7 @@ public class TimetablesImportService implements TimetableDataLoader {
         final BusStopData toBS = connectionsStore.findBusStopById(to)
                 .orElseThrow(() -> new BusStopNotFoundException(to));
 
-        if (connectionsStore.findBusStopConnection(fromBS, toBS, connectionData).isPresent()) {
-            connectionsStore.updateConnection(fromBS, toBS, connectionData);
-        }
-        else {
-            connectionsStore.createConnection(fromBS, toBS, connectionData);
-        }
+        connectionsStore.createConnection(fromBS, toBS, connectionData);
         timetablesStore.createDeparture(fromBS, connectionData);
 
     }

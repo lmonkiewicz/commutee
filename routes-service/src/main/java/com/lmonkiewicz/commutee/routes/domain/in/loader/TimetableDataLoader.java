@@ -13,7 +13,7 @@ public interface TimetableDataLoader {
     void updateBusStop(@NotNull BusStopData busStop)
             throws LoaderException;
 
-    void updateConnection(@NotNull String from, @NotNull String to, @NotNull ConnectionData data)
+    void createConnection(@NotNull String from, @NotNull String to, @NotNull ConnectionData data)
             throws LoaderException;
 
     void start() throws LoaderException;

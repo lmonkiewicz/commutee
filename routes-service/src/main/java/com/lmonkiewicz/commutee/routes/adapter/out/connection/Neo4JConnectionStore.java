@@ -7,6 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.Optional;
+import java.util.stream.Stream;
 
 /**
  * Created by lmonkiewicz on 11.04.2017.
@@ -53,12 +54,7 @@ public class Neo4JConnectionStore implements ConnectionsStore {
     }
 
     @Override
-    public Optional<ConnectionData> findBusStopConnection(@NotNull BusStopData fromBS, @NotNull BusStopData toBS, @NotNull ConnectionData code) {
+    public Stream<ConnectionData> findBusStopConnection(@NotNull BusStopData fromBS, @NotNull BusStopData toBS, @NotNull ConnectionData code) {
         throw new NotImplementedException();
-    }
-
-    @Override
-    public void updateConnection(@NotNull BusStopData fromBS, @NotNull BusStopData toBS, @NotNull ConnectionData connectionData) {
-
     }
 }

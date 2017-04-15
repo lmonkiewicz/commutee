@@ -97,7 +97,7 @@ public class TimetablesImportServiceTest {
         final ConnectionData connection = connection("175", LocalTime.NOON, LocalDate.now(), ConnectionData.Type.BUS, ConnectionData.CourseType.WEEKDAY);
 
         // when
-        final ThrowableAssert.ThrowingCallable methodCall = () -> service.updateConnection("BAD_ID", "BAD_ID2", connection);
+        final ThrowableAssert.ThrowingCallable methodCall = () -> service.createConnection("BAD_ID", "BAD_ID2", connection);
 
         // then
         assertThatExceptionOfType(BusStopNotFoundException.class).isThrownBy(methodCall);
@@ -112,7 +112,7 @@ public class TimetablesImportServiceTest {
         service.updateBusStop(sourceBusStop);
 
         // when
-        final ThrowableAssert.ThrowingCallable methodCall = () -> service.updateConnection(STOP_ID, "BAD_ID2", connection);
+        final ThrowableAssert.ThrowingCallable methodCall = () -> service.createConnection(STOP_ID, "BAD_ID2", connection);
 
         // then
         assertThatExceptionOfType(BusStopNotFoundException.class).isThrownBy(methodCall);
@@ -132,11 +132,11 @@ public class TimetablesImportServiceTest {
         final ConnectionData connection = connection("175", LocalTime.NOON, LocalDate.now(), ConnectionData.Type.BUS, ConnectionData.CourseType.WEEKDAY);
 
         // when
-        service.updateConnection(STOP_1, STOP_2, connection);
+        service.createConnection(STOP_1, STOP_2, connection);
 
         // then
         assertThat(connectionStore.getConnections()).hasSize(1);
-        assertThat(connectionStore.get(STOP_1, STOP_2, connection.getCode())).isPresent().contains(connection);
+        assertThat(connectionStore.get(STOP_1, STOP_2, connection.getCode())).containsExactly(connection);
     }
 
     @Test
@@ -152,18 +152,20 @@ public class TimetablesImportServiceTest {
 
         final ConnectionData connection1 = connection("175", LocalTime.NOON, LocalDate.now(), ConnectionData.Type.BUS, ConnectionData.CourseType.WEEKDAY);
         final ConnectionData connection2 = connection("185", LocalTime.NOON, LocalDate.now(), ConnectionData.Type.BUS, ConnectionData.CourseType.WEEKDAY);
+        final ConnectionData connection3 = connection("185", LocalTime.MIDNIGHT, LocalDate.now(), ConnectionData.Type.BUS, ConnectionData.CourseType.WEEKDAY);
 
         // when
-        service.updateConnection(STOP_1, STOP_2, connection1);
-        service.updateConnection(STOP_1, STOP_2, connection2);
+        service.createConnection(STOP_1, STOP_2, connection1);
+        service.createConnection(STOP_1, STOP_2, connection2);
+        service.createConnection(STOP_1, STOP_2, connection3);
 
         // then
         assertThat(connectionStore.getConnections()).hasSize(2);
-        assertThat(connectionStore.get(STOP_1, STOP_2, connection1.getCode())).isPresent().contains(connection1);
-        assertThat(connectionStore.get(STOP_1, STOP_2, connection2.getCode())).isPresent().contains(connection2);
-        assertThat(connectionStore.get(STOP_1, STOP_2, "FAKE")).isNotPresent();
-        assertThat(connectionStore.get(STOP_1, "FAKE", "FAKE")).isNotPresent();
-        assertThat(connectionStore.get("FAKE", "FAKE", "FAKE")).isNotPresent();
+        assertThat(connectionStore.get(STOP_1, STOP_2, connection1.getCode())).containsExactly(connection1);
+        assertThat(connectionStore.get(STOP_1, STOP_2, connection2.getCode())).containsExactly(connection2, connection3);
+        assertThat(connectionStore.get(STOP_1, STOP_2, "FAKE")).isEmpty();
+        assertThat(connectionStore.get(STOP_1, "FAKE", "FAKE")).isEmpty();
+        assertThat(connectionStore.get("FAKE", "FAKE", "FAKE")).isEmpty();
     }
 
     private ConnectionData connection(String code, LocalTime departureTime, LocalDate validSince, ConnectionData.Type type, ConnectionData.CourseType courseType) {

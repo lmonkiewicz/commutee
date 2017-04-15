@@ -5,6 +5,7 @@ import com.lmonkiewicz.commutee.routes.domain.model.ConnectionData;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
+import java.util.stream.Stream;
 
 /**
  * Created by lmonkiewicz on 11.04.2017.
@@ -26,9 +27,6 @@ public interface ConnectionsStore {
 
     void createBusStopData(@NotNull BusStopData busStop);
 
-    Optional<ConnectionData> findBusStopConnection(
+    Stream<ConnectionData> findBusStopConnection(
             @NotNull BusStopData fromBS, @NotNull BusStopData toBS, @NotNull ConnectionData code);
-
-    void updateConnection(
-            @NotNull BusStopData fromBS, @NotNull BusStopData toBS, @NotNull ConnectionData connectionData);
 }
