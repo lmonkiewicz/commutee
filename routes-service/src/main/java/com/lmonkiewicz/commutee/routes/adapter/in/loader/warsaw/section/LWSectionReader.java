@@ -1,5 +1,6 @@
 package com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.section;
 
+import com.google.common.base.Strings;
 import com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.AbstractSectionReader;
 import com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.ZtmUtils;
 import com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.model.RouteDefinition;
@@ -26,6 +27,9 @@ public class LWSectionReader extends AbstractSectionReader<RouteDefinition,Route
     @Override
     protected RouteStop onSectionContentLine(@NotNull String line) {
         final List<String> values = ZtmUtils.asColumns(5, line, 32, 2, 8, 32, 3, 4, 4, 1, 2, 1, 2, 1);
+        final Integer minArrivalTime = !Strings.isNullOrEmpty(values.get(8)) ? Integer.valueOf(values.get(8)) : null;
+        final Integer maxArrivalTime = !Strings.isNullOrEmpty(values.get(10)) ? Integer.valueOf(values.get(10)) : null;
+
         final RouteStop routeStop = RouteStop.builder()
                 .streetName(Optional.ofNullable(values.get(0))
                         .map(name -> ZtmUtils.trimTrailingString(name, ","))
@@ -39,8 +43,8 @@ public class LWSectionReader extends AbstractSectionReader<RouteDefinition,Route
                 .townCode(values.get(4))
                 .busStopGroupCode(values.get(5))
                 .onDemand("NŻ".equals(values.get(6)))
-                .minArrivalTime(Integer.valueOf(values.get(8)))
-                .maxArrivalTime(Integer.valueOf(values.get(10)))
+                .minArrivalTime(minArrivalTime)
+                .maxArrivalTime(maxArrivalTime)
                 .build();
 
         routeDefinition.add(routeStop);

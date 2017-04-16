@@ -5,6 +5,7 @@ import com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.AbstractSectionR
 import com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.ZtmUtils;
 import com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.model.BusStop;
 import com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.model.BusStopLineType;
+import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -15,6 +16,7 @@ import java.util.Map;
 /**
  * Created by lmonkiewicz on 2017-02-25.
  */
+@Slf4j
 public class PRSectionReader extends AbstractSectionReader<Map<String, BusStop>, BusStop> {
 
     private static final int BUS_STOP_INDENT = 3;
@@ -39,12 +41,24 @@ public class PRSectionReader extends AbstractSectionReader<Map<String, BusStop>,
             case BUS_STOP_INDENT: {
                 final List<String> values = ZtmUtils.asColumns(BUS_STOP_INDENT, line, 9, 7, 43, 41, 3, 14, 3, 14);
 
+                final String id = values.get(0);
+
+                Double y = -1.0;
+                Double x = -1.0;
+
+                try {
+                    y = Double.valueOf(values.get(5));
+                    x = Double.valueOf(values.get(7));
+                } catch (NumberFormatException e) {
+                    log.warn("Bad coordinates for {}: x={}, y={}", id, values.get(5), values.get(7));
+                }
+
                 final BusStop busStop = BusStop.builder()
-                        .id(values.get(0))
+                        .id(id)
                         .name(ZtmUtils.trimTrailingString(values.get(2),","))
                         .direction(ZtmUtils.trimTrailingString(values.get(3),","))
-                        .y(Double.valueOf(values.get(5)))
-                        .x(Double.valueOf(values.get(7)))
+                        .y(y)
+                        .x(x)
                         .build();
 
                 data.put(busStop.getId(), busStop);

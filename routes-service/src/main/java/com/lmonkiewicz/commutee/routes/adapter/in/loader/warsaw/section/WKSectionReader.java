@@ -26,7 +26,7 @@ public class WKSectionReader extends AbstractSectionReader<Courses, Course> {
                 .courseId(values.get(0))
                 .stopId(values.get(1))
                 .dayType(values.get(2))
-                .departTime(LocalTime.of(Integer.valueOf(values.get(3)), Integer.valueOf(values.get(5))))
+                .departTime(LocalTime.of(Integer.valueOf(values.get(3)) % 24, Integer.valueOf(values.get(5))))
                 .bonusStop("B".equals(values.get(6)))
                 .endStop("P".equals(values.get(6)))
                 .build();

@@ -5,6 +5,7 @@ import com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.SectionReaderExc
 import com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.ZtmUtils;
 import com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.model.RoutePoint;
 import com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.model.RoutePoints;
+import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -14,6 +15,7 @@ import java.util.List;
 /**
  * Created by lmonkiewicz on 07.03.2017.
  */
+@Slf4j
 public class RPSectionReader extends AbstractSectionReader<RoutePoints, RoutePoint>{
 
     private RoutePoints routePoints = new RoutePoints();
@@ -27,12 +29,23 @@ public class RPSectionReader extends AbstractSectionReader<RoutePoints, RoutePoi
     @Override
     protected RoutePoint onSectionContentLine(@NotNull String line) {
         final List<String> values = ZtmUtils.asColumns(5, line, 6, 34, 2, 7, 14, 3, 14);
+        final String id = values.get(0);
+
+        Double y = -1.0;
+        Double x = -1.0;
+        try {
+            y = Double.valueOf(values.get(4));
+            x = Double.valueOf(values.get(6));
+        } catch (NumberFormatException e) {
+            log.warn("Bad cooridnates for {} x={} y={}", id, values.get(5), values.get(6));
+        }
+
         final RoutePoint routePoint = RoutePoint.builder()
-                .id(values.get(0))
+                .id(id)
                 .name(values.get(1))
                 .townCode(values.get(2))
-                .y(Double.valueOf(values.get(4)))
-                .x(Double.valueOf(values.get(6)))
+                .y(y)
+                .x(x)
                 .build();
 
         routePoints.add(routePoint);

@@ -9,6 +9,11 @@ import org.springframework.context.annotation.Configuration;
 public class RoutesServiceConfig {
 
 //    @Bean
+//    ZtmDataLoader ztmDataLoader(){
+//        return new ZtmDataLoader();
+//    }
+
+//    @Bean
 //    ConnectionsStore connectionsStoreService(){
 //        return new Neo4JConnectionStore();
 //    }
