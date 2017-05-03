@@ -3,6 +3,7 @@ package com.lmonkiewicz.commutee.routes.adapter.in.loader.warsaw.model;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
 
 /**
  * Created by lmonkiewicz on 07.03.2017.
@@ -10,6 +11,7 @@ import lombok.Getter;
 @Builder
 @Getter
 @EqualsAndHashCode
+@ToString
 public class RouteStop {
 
     private String streetName;

@@ -12,6 +12,7 @@ import java.time.LocalTime;
 @Builder
 @Getter
 @EqualsAndHashCode(exclude = {"valid"})
+@ToString
 public class ConnectionData {
 
     @NonNull

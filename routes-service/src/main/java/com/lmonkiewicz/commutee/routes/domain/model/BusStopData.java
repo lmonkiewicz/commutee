@@ -8,6 +8,7 @@ import lombok.*;
 @Builder
 @Getter
 @EqualsAndHashCode(exclude = {"valid"})
+@ToString
 public class BusStopData {
 
     @NonNull
