@@ -17,7 +17,6 @@ import net.sf.sevenzipjbinding.simple.ISimpleInArchive;
 import net.sf.sevenzipjbinding.util.ByteArrayStream;
 import org.apache.commons.io.IOUtils;
 
-import javax.annotation.PostConstruct;
 import java.io.*;
 import java.util.List;
 import java.util.Objects;
@@ -37,7 +36,7 @@ public class ZtmDataLoader {
     }
 
     // for now, load it on startup
-    @PostConstruct
+//    @PostConstruct
     public void loadData(){
         log.info("Loading data");
 
